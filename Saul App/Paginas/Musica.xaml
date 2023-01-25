@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Saul_App.Paginas.Musica"
+             Shell.NavBarIsVisible="True"             
+             Title="Volver al menu">
+    <ScrollView>
+    <VerticalStackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="300"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="250"/>
+            </Grid.ColumnDefinitions>
+           
+            <Label Text="Artista: " FontSize="20" FontAttributes="Bold" Grid.Row="0"   Grid.Column="0" BackgroundColor="WhiteSmoke" TextColor="Black"/>
+            <Entry x:Name="artista" Placeholder="Introduce el artista"  FontSize="20" PlaceholderColor="Aqua" Grid.Row="0" Grid.Column="1"/>
+
+            <Label Text="Album: " FontSize="20" FontAttributes="Bold" Grid.Row="1" Grid.Column="0"  BackgroundColor="WhiteSmoke" TextColor="Black"/>
+            <Entry x:Name="album" Placeholder="Introduce el album"  FontSize="20" PlaceholderColor="Aqua" Grid.Row="1" Grid.Column="1"/>
+
+            <Label Text="Genero: " FontSize="20" FontAttributes="Bold" Grid.Row="2" Grid.Column="0" BackgroundColor="WhiteSmoke" TextColor="Black"/>
+            <Entry x:Name="genero" Placeholder="Introduce el genero"  FontSize="20" PlaceholderColor="Aqua" Grid.Row="2" Grid.Column="1"/>
+
+            <Label Text="Lanzamiento: " FontSize="15" FontAttributes="Bold" Grid.Row="3" Grid.Column="0" BackgroundColor="WhiteSmoke" TextColor="Black"/>
+            <Entry x:Name="release" Placeholder="Año de lanzamiento"  FontSize="20" PlaceholderColor="Aqua" Grid.Row="3" Grid.Column="1"/>
+
+            <Label Text="Calificacion: " FontSize="18" FontAttributes="Bold" Grid.Row="4" Grid.Column="0" BackgroundColor="WhiteSmoke" TextColor="Black"/>
+            <Entry x:Name="rating" Placeholder="/10"  FontSize="20" PlaceholderColor="Aqua" Grid.Row="4" Grid.Column="1"/>
+
+            <Button Text="Agregar" FontSize="Medium" FontAttributes="Bold" Grid.Row="5" Grid.Column="0" BackgroundColor="LightGreen" Clicked="btnAgregar"/>
+            <CollectionView x:Name="colleciontView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItems SwipeBehaviorOnInvoked="Close">
+                                    <SwipeItem Text="Eliminar" BackgroundColor="OrangeRed"/>
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="50"/>
+                                </Grid.RowDefinitions>
+
+                                    <Label Text="{Binding Artista}" FontSize="Medium" Grid.Row="0"/>
+                                    <Label Text="{Binding Album}" FontSize="Medium"  Grid.Row="1"/>
+                            </Grid>
+                        </SwipeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
